@@ -38,33 +38,20 @@ public class MovieAdpater extends RecyclerView.Adapter<MovieAdpater.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        Movie movie = movieList.get(position);
 
+        String id = movie.getId();
+        String name = movie.getName();
+        String image = movie.getImage();
 
-      /*  String name = movie.getName();
-        String img = movie.getImg();
-        String description = movie.getDescription();
-        float booking = movie.getBooking();
-        int rating = movie.getRating();
-        String categorie = movie.getCategorie();
-        String release = movie.getRelease();
-
+        holder.idTv.setText(id);
         holder.nameTv.setText(name);
-        holder.categorieTv.setText(categorie);
-        holder.relaseTv.setText(release);
-        holder.bookingTv.setText((int) booking);
-        holder.ratingTv.setText(rating);
-        holder.descriptionTv.setText(description);
-
-
-*/
-        holder.idTv.setText(movieList.get(position).getId());
-        holder.nameTv.setText(movieList.get(position).getName());
 
         try{
-
-      //      Picasso.get().load(img).into(holder.movieIv);
-            Picasso.get().load(movieList.get(position).getImage()).placeholder(R.drawable.ic_launcher_background).into(holder.imageIv);
+            Picasso.get().load(image).placeholder(R.drawable.ic_launcher_background).into(holder.imageIv);
         }catch (Exception e){}
+
+
 
 
 
@@ -80,8 +67,6 @@ public class MovieAdpater extends RecyclerView.Adapter<MovieAdpater.ViewHolder>{
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-     /*   private TextView nameTv,descriptionTv,ratingTv,bookingTv,relaseTv,categorieTv;
-        private ImageView movieIv;*/
 
         TextView idTv,nameTv;
         ImageView imageIv;
@@ -90,18 +75,8 @@ public class MovieAdpater extends RecyclerView.Adapter<MovieAdpater.ViewHolder>{
             super(itemView);
 
             idTv = itemView.findViewById(R.id.idTv);
-            nameTv = itemView.findViewById(R.id.idTv);
+            nameTv = itemView.findViewById(R.id.nameTv);
             imageIv = itemView.findViewById(R.id.imageIv);
-      /*      nameTv = itemView.findViewById(R.id.nameTv);
-            movieIv = itemView.findViewById(R.id.movieIv);
-            descriptionTv = itemView.findViewById(R.id.descriptionTv);
-            ratingTv = itemView.findViewById(R.id.ratingTv);
-            bookingTv = itemView.findViewById(R.id.bookingTv);
-            relaseTv = itemView.findViewById(R.id.releaseTv);
-            categorieTv = itemView.findViewById(R.id.categorieTv);*/
-
-
-
 
 
         }

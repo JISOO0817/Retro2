@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         movieList = new ArrayList<>();
 
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+
 
 
 
@@ -42,38 +42,36 @@ public class MainActivity extends AppCompatActivity {
 
         MovieApi movieApi = retrofit.create(MovieApi.class);
 
-        Call<List<Movie>> call = movieApi.getMovies();
 
-        call.enqueue(new Callback<List<Movie>>() {
+
+
+        Call<JSONResponse> call = movieApi.getMovies();
+
+        call.enqueue(new Callback<JSONResponse>() {
             @Override
-            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                // get data or display data
+            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
 
-                List<Movie> movies = response.body();
-
-
-                for(Movie movie:movies){
-
-                    movieList.add(movie);
-
-                }
+                JSONResponse jsonResponse = response.body();
+                movieList = new ArrayList<>(Arrays.asList(jsonResponse.getMoviz()));
 
                 PutDataIntoRecyclerView(movieList);
-                Log.v("Tag", "fkfkfkkf");
-                Log.v("log", String.valueOf(movieList.size()));
+
             }
 
             @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
+            public void onFailure(Call<JSONResponse> call, Throwable t) {
 
             }
         });
+
+
     }
 
     private void PutDataIntoRecyclerView(List<Movie> movieList) {
 
         MovieAdpater movieAdpater = new MovieAdpater(this,movieList);
-        // recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(movieAdpater);
     }
 }
