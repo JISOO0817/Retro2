@@ -18,6 +18,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    //https://run.mocky.io/v3/b0b08dd4-9086-4e05-bb01-a2344545369f
+
+
+    // Fixed Part of url;
 
     RecyclerView recyclerView;
     List<Movie> movieList;

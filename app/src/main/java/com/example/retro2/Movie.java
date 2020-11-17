@@ -1,32 +1,48 @@
 package com.example.retro2;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Movie {
 
     // Model Class
 
-  /*  private String name;
-    private String description;
-    private int Rating;
-    private float booking;
-    private String categorie;
-    private String release;
-    private String img;
-*/
 
-   private String id;
-   private String name;
-   private String image;
+   private int id;
+   private String title;
+   private float rating;
+   private String poster;
 
+   //we need to make object of class details
 
-    public String getId() {
+    //Different name from json, so we need to serialize it
+    @SerializedName("Details")
+   private MoreDetails moreDetails;
+
+    public Movie(int id, String title, float rating, String poster, MoreDetails moreDetails) {
+        this.id = id;
+        this.title = title;
+        this.rating = rating;
+        this.poster = poster;
+        this.moreDetails = moreDetails;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public String getImage() {
-        return image;
+    public float getRating() {
+        return rating;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public MoreDetails getMoreDetails() {
+        return moreDetails;
     }
 }

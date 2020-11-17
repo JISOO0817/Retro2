@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_marginBottom="20dp">
 
     <ImageView
         android:id="@+id/imageIv"
@@ -24,24 +25,63 @@
 
 
         <TextView
-            android:id="@+id/nameTv"
+            android:id="@+id/idTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="id"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            />
+
+
+        <TextView
+            android:id="@+id/titleTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
             android:text="ddd"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             />
 
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:numStars="5"/>
+
 
         <TextView
-            android:id="@+id/idTv"
-            android:layout_width="match_parent"
+            android:id="@+id/releaseTv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-             />
+            android:layout_gravity="center"
+            android:text="개봉일"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/categoryTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="개봉일"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/durationTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="개봉일"
+            android:layout_marginTop="5dp"/>
+
+
+
+
 
 
 

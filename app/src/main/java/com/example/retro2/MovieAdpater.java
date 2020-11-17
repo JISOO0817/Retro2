@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,15 +41,22 @@ public class MovieAdpater extends RecyclerView.Adapter<MovieAdpater.ViewHolder>{
 
         Movie movie = movieList.get(position);
 
-        String id = movie.getId();
-        String name = movie.getName();
-        String image = movie.getImage();
+        int id = movie.getId();
+        String title = movie.getTitle();
+        float rating = movie.getRating();
+        String poster = movie.getPoster();
 
-        holder.idTv.setText(id);
-        holder.nameTv.setText(name);
+
+
+        holder.idTv.setText(String.valueOf(id));
+        holder.titleTv.setText(title);
+        holder.durationTv.setText(movieList.get(position).getMoreDetails().getDuration());
+        holder.categoryTv.setText(movieList.get(position).getMoreDetails().getCategory());
+        holder.releaseTv.setText(movieList.get(position).getMoreDetails().getRelease());
+        holder.ratingBar.setRating(rating/2);
 
         try{
-            Picasso.get().load(image).placeholder(R.drawable.ic_launcher_background).into(holder.imageIv);
+            Picasso.get().load(poster).placeholder(R.drawable.ic_launcher_background).into(holder.imageIv);
         }catch (Exception e){}
 
 
@@ -68,16 +76,20 @@ public class MovieAdpater extends RecyclerView.Adapter<MovieAdpater.ViewHolder>{
     class ViewHolder extends RecyclerView.ViewHolder{
 
 
-        TextView idTv,nameTv;
+        TextView idTv,titleTv,releaseTv,categoryTv,durationTv;
         ImageView imageIv;
+        RatingBar ratingBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             idTv = itemView.findViewById(R.id.idTv);
-            nameTv = itemView.findViewById(R.id.nameTv);
+            titleTv = itemView.findViewById(R.id.titleTv);
             imageIv = itemView.findViewById(R.id.imageIv);
-
+            releaseTv = itemView.findViewById(R.id.releaseTv);
+            categoryTv = itemView.findViewById(R.id.categoryTv);
+            durationTv = itemView.findViewById(R.id.durationTv);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
 
         }
     }
